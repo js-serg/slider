@@ -1,0 +1,78 @@
+<html>
+<title>Slider</title>
+<style>	
+    .sl
+	{
+		width:200px;
+		height: 200px;		
+		overflow: hidden;
+	    margin: 20px;		
+	}
+	ul{
+		list-style: none;
+	    width: 800px;
+		position: relative;
+		padding: 0;	
+		margin: 0;	
+	}
+	li {
+		width: 200px;
+		height: 200px;
+		float: left;
+		position: relative;		
+	}
+	.li_1{
+	background:#f9df92;
+	}
+	.li_2{
+	background:#d86a6a;
+	}
+	.li_3{
+	background:#3ea1a7;
+	}
+	.li_4{
+	background:#b8e06b;
+	}
+</style>
+<body>
+
+<div class = "sl">
+	     <ul>
+			<li class = "li_1"></li>
+			<li class = "li_2"></li>
+			<li class = "li_3"></li>
+			<li class = "li_4"></li>
+		</ul>	
+</div>
+<div class = "sl">
+   <input type = "button" class = "butNext" value = "NEXT"/>
+   <input type = "button" class = "butPrev" value = "PREV"/>
+</div>   
+<script>
+var ul = document.querySelector('ul');  
+	butNext = document.querySelector('.butNext');
+	butPrev = document.querySelector('.butPrev');	
+	
+	butNext.addEventListener('click', next);
+	
+	function next()
+	{
+		var clone = ul.firstElementChild.cloneNode(true);
+		ul.appendChild(clone);
+		var delFirst = ul.firstElementChild;
+		ul.removeChild(delFirst);
+	
+	}
+	
+	butPrev.addEventListener('click', prev);
+	
+	function prev()
+	{		
+		var elLast = ul.lastElementChild;
+		ul.removeChild(elLast);		
+		ul.insertAdjacentElement("afterBegin",elLast);
+	}
+
+</script>
+</body>
+</html>
